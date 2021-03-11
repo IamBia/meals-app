@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
 
 const CategoryMealsScreen = (props) => {
+
   const renderMealItem = (itemData) => {
     return (
       <MealItem
@@ -13,7 +14,9 @@ const CategoryMealsScreen = (props) => {
         complexity={itemData.item.complexity}
         affordability={itemData.item.affordability}
         image={itemData.item.imageUrl}
-        onSelectMeal={() => {}}
+        onSelectMeal={() => {
+          props.navigation.navigate('MealDetail', {mealId: itemData.item.id})
+        }}
       />
     );
   };
